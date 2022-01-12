@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typing game</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="container">
+        <h1>Typing game!</h1>
+    </header>
+    <main class="container">
+        <div class="section">
+            <p><em>Practice your typing skills with a quote from Quotable API. <br>Click <kbd>Start</kbd> to begin!</em></p>
+        </div>
+        
+        <div class="section input">
+        <p id="quote"></p> <!-- This will display our quote -->
+        <p id="message"></p> <!-- This will display any status messages -->
+            <button class="btn" id="start">Start</button> <!-- To start the game -->
+            <br>
+            <input type="text" aria-label="current word" id="typed-value" placeholder="Start typing here..."/> <!-- The textbox for typing -->
+        </div>
+    </main>
+    
+    <script src="script.js" defer></script>
+</body>
+
+</html>
