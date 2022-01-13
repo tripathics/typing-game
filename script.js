@@ -27,14 +27,14 @@ let currWordLen = 0;
 // Statistics
 let startTime = 0;
 let endTime = 0;
-let wrongChars = [];
+let wrongCharCount = 0;
 
 // Element objects
 let btnEl = document.getElementById('startReset');        // Start/Reset button element
 let typedEl = document.getElementById('typed-value');     // Text input element where user types
 let messageEl = document.getElementById('message');       // Message element to display status
 let quoteEl = document.getElementById('quote');           // Paragraph element to display quote
-let wordEl = document.getElementById('w0');               // Current word element 
+let wordEl = document.getElementById('w0');               // Current word element
 
 // Add event listeners
 
@@ -49,10 +49,11 @@ btnEl.addEventListener('click', function() {
         
         // Display the quote inside html by spanning each word
         let html = '';
-        for (let i = 0; i < wordsLen; i++) {
+        for (let i = 0; i < wordsLen - 1; i++) {
             words[i] = `${words[i]} `;
             html += `<span id="w${i}">${words[i]}</span>`
         }
+        html += `<span id="w${wordsLen - 1}">${words[wordsLen - 1]}</span>`
         quoteEl.innerHTML = html;
 
         resetInterface();
@@ -64,12 +65,12 @@ btnEl.addEventListener('click', function() {
 
 typedEl.addEventListener('focus', function (e) {
     if (quoteLen === 0) {
-        displayMessage('warning', 'Click on <kbd>Start</kbd> first!');
+        displayMessage('warning', '<p>Click on <kbd>Start</kbd> first!</p>');
         e.preventDefault();
     }
 })
 
-typedEl.addEventListener('keyup', function(event) {
+typedEl.addEventListener('input', function(e) {
     // Record start time and get current word
     if (!initForType) {
         startTime = new Date().getTime();
@@ -81,11 +82,13 @@ typedEl.addEventListener('keyup', function(event) {
     let inputLen = input.length;
 
     // Typing complete
-    if (wordInd === wordsLen - 1) {
+    if (words[wordInd] === input && wordInd === wordsLen - 1) {
+        e.preventDefault();
+        console.log(input, words[wordInd]);
         endTime = new Date().getTime();
 
         // Remove highlight from last word
-        document.getElementById(`w${wordInd}`).classList.toggle('highlight');
+        document.getElementById(`w${wordInd}`).style.backgroundColor = 'transparent';
 
         // Display message
         displayMessage('primary');
@@ -119,10 +122,9 @@ typedEl.addEventListener('keyup', function(event) {
         this.style.backgroundColor = 'var(--red)';
         this.style.color = 'var(--white)';
 
-        // check for incorrect characters
-        let key = event.key;
+        let key = e.data;
         if (validChars.includes(key)) {
-            wrongChars.push(key);
+            wrongCharCount++;
         }
     }
 });
@@ -137,7 +139,7 @@ function resetInterface() {
     typedEl.value = '';
 
     // Reset all typing variables
-    wrongChars = [];
+    wrongCharCount = 0;
 
     // Reset typing variables
     wordInd = 0;
@@ -158,10 +160,15 @@ function displayMessage(classStr, msg='') {
     }
     else 
     {
-        let wrongCharCnt = wrongChars.length;
-        duration = (endTime - startTime)/1000;                   // duration of typing
-        accuracy = 100 * (1 - wrongCharCnt / quoteLen);           // percentage of correctness
-        msg += `Congratulations!! You completed in <br><b>${duration} sec</b> with <b>${accuracy}%</b> accuracy...`
+        // typing duraction
+        let duration = (endTime - startTime)/1000;
+        let accuracy = 100 * (1 - wrongCharCount / quoteLen);
+
+        if (accuracy < 0)
+            accuracy = 0;
+
+        msg += `<p>Congratulations!! You completed <br>in <b>${duration.toFixed(2)} sec</b> with <b>${accuracy.toFixed(2)}%</b> accuracy...</p>`;
+
         message.classList.remove('warning');
         message.classList.add('primary');
     }
