@@ -60,9 +60,6 @@ btnEl.addEventListener('click', function() {
 
         // Turn Start button to Reset button
         btnEl.innerHTML = 'Reset';
-
-        // Show the input textbox
-        typedEl.style.display = 'inline';
     })
 });
 
@@ -130,6 +127,11 @@ typedEl.addEventListener('input', function(e) {
         let key = e.data;
         if (validChars.includes(key)) {
             wrongCharCount++;
+
+            // debug
+            messageEl.innerHTML = `${key}`;
+            message.style.display = 'block';
+
         }
     }
 });
@@ -142,6 +144,9 @@ function resetInterface() {
 
     // Clear input
     typedEl.value = '';
+    // Show the input textbox if hidden
+    typedEl.style.display = 'inline';
+    typedEl.style.backgroundColor = 'var(--white)';
 
     // Reset all typing variables
     wrongCharCount = 0;
