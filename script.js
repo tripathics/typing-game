@@ -60,6 +60,9 @@ btnEl.addEventListener('click', function() {
 
         // Turn Start button to Reset button
         btnEl.innerHTML = 'Reset';
+
+        // Show the input textbox
+        typedEl.style.display = 'inline';
     })
 });
 
@@ -83,6 +86,8 @@ typedEl.addEventListener('input', function(e) {
 
     // Typing complete
     if (words[wordInd] === input && wordInd === wordsLen - 1) {
+        // Hide the input textbox
+        this.style.display = 'none';
         e.preventDefault();
         console.log(input, words[wordInd]);
         endTime = new Date().getTime();
