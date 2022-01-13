@@ -116,8 +116,8 @@ button:active {
 }
 
 #message {
-    padding: 0.75rem 1.25rem;
-    text-align: center;
+    padding: 0.65rem 1.25rem;
+    text-align: left;
     display: none;
     margin-bottom: 1rem;
     border: 1px solid transparent;
@@ -143,4 +143,9 @@ button:active {
 .wrong {
     background-color: var(--red);
     color: var(--white);
+}
+
+li {
+    font-family: 'Zilla Slab', serif;
+    list-style: var(--dark);
 }

@@ -29,7 +29,7 @@ let currWordLen = 0;
 // Statistics
 let startTime = 0;
 let endTime = 0;
-let wrongCharCount = 0;
+let wrongWords = [];
 
 // Element objects
 let btnEl = document.getElementById('startReset');        // Start/Reset button element
@@ -72,7 +72,7 @@ typedEl.addEventListener('focus', function (e) {
     }
 })
 
-typedEl.addEventListener('input', function(e) {
+typedEl.addEventListener('input', function() {
     // Record start time and get current word
     if (!initForType) {
         startTime = new Date().getTime();
@@ -87,7 +87,6 @@ typedEl.addEventListener('input', function(e) {
     if (words[wordInd] === input && wordInd === wordsLen - 1) {
         // Hide the input textbox
         this.style.display = 'none';
-        e.preventDefault();
         console.log(input, words[wordInd]);
         endTime = new Date().getTime();
 
@@ -126,15 +125,9 @@ typedEl.addEventListener('input', function(e) {
         this.style.backgroundColor = 'var(--red)';
         this.style.color = 'var(--white)';
 
-        let key = e.data;
-        if (validChars.includes(key)) {
-            wrongCharCount++;
-
-            // debug
-            messageEl.innerHTML = `wrong: ${wrongCharCount}`;
-            message.style.display = 'block';
-
-        }
+        // Add two list of wrong words
+        if (!wrongWords.includes(wordInd))
+            wrongWords.push(wordInd);
     }
 });
 
@@ -151,7 +144,7 @@ function resetInterface() {
     typedEl.style.backgroundColor = 'var(--white)';
 
     // Reset all typing variables
-    wrongCharCount = 0;
+    wrongWords = [];
 
     // Reset typing variables
     wordInd = 0;
@@ -173,13 +166,24 @@ function displayMessage(classStr, msg='') {
     {
         // typing duraction
         let duration = (endTime - startTime)/1000;
-        let accuracy = 100 * (1 - wrongCharCount / quoteLen);
-
-        if (accuracy < 0)
-            accuracy = 0;
-
-        msg += `<p>Congratulations!! You completed <br>in <b>${duration.toFixed(2)} sec</b> with <b>${accuracy.toFixed(2)}%</b> accuracy...</p>`;
-
+        
+        msg += `<p>Congratulations!! You completed in <b>${duration.toFixed(2)} seconds..</b></p>`;
+        
+        // for wrong words
+        let wrongWordsLen = wrongWords.length;
+        
+        if (wrongWordsLen > 0) {
+            wrongWords.forEach(i => {
+                let word = document.getElementById(`w${i}`).style;
+                word.backgroundColor = 'var(--red)';
+                word.color = 'var(--white)';
+            })
+                msg += `<p><b>${wrongWordsLen} out of ${wordsLen} words</b> are incorrect.`
+                msg += `<br>Incorrect words highlighted in red</p>`
+            }
+        else {
+            msg += `<p><em>Your accuracy was 100%<em>!!</p>`
+        }
         messageEl.classList.remove('warning');
         messageEl.classList.add('primary');
     }
