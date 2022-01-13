@@ -1,3 +1,5 @@
+'use strict';
+
 // List of valid characters
 const validChars = [
     ' ', '!', '"', '#', '$', '%', '&', "'", '(',
