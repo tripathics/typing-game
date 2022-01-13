@@ -163,17 +163,16 @@ function displayMessage(classStr, msg='') {
                 word.backgroundColor = 'var(--red)';
                 word.color = 'var(--white)';
             })
-                if (wrongWordsLen > 1) {
+                if (wrongWordsLen > 1)
                     msg += `<p><b>${wrongWordsLen} out of ${wordsLen} words</b> are incorrect.`;
-                }
-                else {
+                else
                     msg += `<p><b>${wrongWordsLen} out of ${wordsLen} words</b> is incorrect.`;
-                }
+                
                 msg += `<br>Incorrect words highlighted in red</p>`;
             }
-        else {
-            msg += `<p><em>Impressive!! You were 100% accurate...<em>!!</p>`;
-        }
+        else
+            msg += `<p>Impressive!! You are <b>100% accurate</b>...!!</p>`;
+        
         messageEl.classList.remove('warning');
         messageEl.classList.add('primary');
     }
