@@ -164,11 +164,10 @@ function resetInterface() {
 
 // Display a message
 function displayMessage(classStr, msg='') {
-    message = document.getElementById('message');
     if (classStr == 'warning')
     {
-        message.classList.remove('primary');
-        message.classList.add('warning');
+        messageEl.classList.remove('primary');
+        messageEl.classList.add('warning');
     }
     else 
     {
@@ -181,10 +180,10 @@ function displayMessage(classStr, msg='') {
 
         msg += `<p>Congratulations!! You completed <br>in <b>${duration.toFixed(2)} sec</b> with <b>${accuracy.toFixed(2)}%</b> accuracy...</p>`;
 
-        message.classList.remove('warning');
-        message.classList.add('primary');
+        messageEl.classList.remove('warning');
+        messageEl.classList.add('primary');
     }
 
-    message.innerHTML = msg;
-    message.style.display = 'block';
+    messageEl.innerHTML = msg;
+    messageEl.style.display = 'block';
 }
