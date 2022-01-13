@@ -129,7 +129,7 @@ typedEl.addEventListener('input', function(e) {
             wrongCharCount++;
 
             // debug
-            messageEl.innerHTML = `${key}`;
+            messageEl.innerHTML = `wrong: ${wrongCharCount}`;
             message.style.display = 'block';
 
         }
