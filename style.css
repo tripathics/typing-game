@@ -109,8 +109,10 @@ button:active {
 }
 
 #quote {
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: large;
+    font-family: 'Zilla Slab', serif;
+    font-size: larger;
+    letter-spacing: .035rem;
+    line-height: 1.3;
 }
 
 #message {
