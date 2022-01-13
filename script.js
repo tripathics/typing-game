@@ -1,20 +1,5 @@
 'use strict';
 
-// List of valid characters
-const validChars = [
-    ' ', '!', '"', '#', '$', '%', '&', "'", '(',
-    ')', '*', '+', ',', '-', '.', '/', '0', '1',
-    '2', '3', '4', '5', '6', '7', '8', '9', ':',
-    ';', '<', '=', '>', '?', '@', 'A', 'B', 'C',
-    'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L',
-    'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U',
-    'V', 'W', 'X', 'Y', 'Z', '[', '\\', ']', '^',
-    '_', '`', 'a', 'b', 'c', 'd', 'e', 'f', 'g',
-    'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',
-    'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y',
-    'z', '{', '|', '}', '~'
-];
-
 // Displaying the quote to be typed by user
 let quote = '';              // Quote string from API
 let quoteLen = 0;            // Length of quote string
@@ -178,11 +163,16 @@ function displayMessage(classStr, msg='') {
                 word.backgroundColor = 'var(--red)';
                 word.color = 'var(--white)';
             })
-                msg += `<p><b>${wrongWordsLen} out of ${wordsLen} words</b> are incorrect.`
-                msg += `<br>Incorrect words highlighted in red</p>`
+                if (wrongWordsLen > 1) {
+                    msg += `<p><b>${wrongWordsLen} out of ${wordsLen} words</b> are incorrect.`;
+                }
+                else {
+                    msg += `<p><b>${wrongWordsLen} out of ${wordsLen} words</b> is incorrect.`;
+                }
+                msg += `<br>Incorrect words highlighted in red</p>`;
             }
         else {
-            msg += `<p><em>Your accuracy was 100%<em>!!</p>`
+            msg += `<p><em>Impressive!! You were 100% accurate...<em>!!</p>`;
         }
         messageEl.classList.remove('warning');
         messageEl.classList.add('primary');
