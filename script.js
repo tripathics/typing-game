@@ -158,8 +158,9 @@ function displayMessage(classStr, msg='') {
     }
     else 
     {
+        let wrongCharCnt = wrongChars.length;
         duration = (endTime - startTime)/1000;                   // duration of typing
-        accuracy = 100 * (1 - incCharsCnt / quoteLen);     // percentage of correctness
+        accuracy = 100 * (1 - wrongCharCnt / quoteLen);           // percentage of correctness
         msg += `Congratulations!! You completed in <br><b>${duration} sec</b> with <b>${accuracy}%</b> accuracy...`
         message.classList.remove('warning');
         message.classList.add('primary');
