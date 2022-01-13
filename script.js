@@ -52,8 +52,8 @@ btnEl.addEventListener('click', function() {
         // Display the quote inside html by spanning each word
         let html = '';
         for (let i = 0; i < wordsLen - 1; i++) {
+            html += `<span id="w${i}">${words[i]}</span> `;
             words[i] = `${words[i]} `;
-            html += `<span id="w${i}">${words[i]}</span>`
         }
         html += `<span id="w${wordsLen - 1}">${words[wordsLen - 1]}</span>`
         quoteEl.innerHTML = html;
