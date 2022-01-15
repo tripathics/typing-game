@@ -203,8 +203,8 @@ button.btn {
     color: var(--btnfont);
     font-weight: bold;
     vertical-align: middle;
-    transition: box-shadow .15s ease-in-out;
-    transition-delay: 0s;
+    transition: background-color .15s ease-in-out, box-shadow .15s ease-in-out, border .1s ease-in;
+    transition-delay: 0s, 0s, 0s;
 }
 
 button.btn:hover, button.btn:active {
