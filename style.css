@@ -75,6 +75,10 @@
     --warnfont: var(--red);
     --warnbg: #fff4cd;
     --warnbdr: #e9ce7d;
+
+    /* switcher button */
+    --switcherbg: var(--bg);
+    --switcheractbdr: var(--extdark);
 }
 
 .dark-theme {
@@ -125,6 +129,10 @@
     --warnfont: #f8baba;
     --warnbg: #2c2a2a;
     --warnbdr: #e7c04b;
+
+    /* switcher button */
+    --switcherbg: var(--bg);
+    --switcheractbdr: var(--white);
 }
 
 * {
@@ -194,18 +202,24 @@ button.btn:active {
 
 button.switcher {
     position: absolute;
-    top: 2.1rem;
+    top: 2rem;
     right: 1.2rem;
-    width: 2.5em;
-    height: 2.5em;
+    width: 3em;
+    height: 3em;
     border-radius: 50%;
-    border: 2px solid var(--gray);
-    background-color: white;
+    border: 1px solid transparent;
+    background-color: var(--switcherbg);
 }
 
 button.switcher:active {
-    background-color: #dbdbdb;
-    border: 2px solid var(--dark);
+    border: 2px solid var(--switcheractbdr);
+}
+
+div.heading {
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+    max-width: 550px;
 }
 
 .inp {
