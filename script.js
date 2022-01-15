@@ -165,7 +165,7 @@ function displayMessage(classStr, msg='') {
                 else
                     msg += `<p><b>${wrongWordsLen} out of ${wordsLen} words</b> is incorrect.`;
                 
-                msg += `<br>Incorrect words are highlighted in red</p>`;
+                msg += `<br>Incorrect words are highlighted red</p>`;
             }
         else
             msg += `<p>Impressive!! You are <b>100% accurate</b>...!!</p>`;
