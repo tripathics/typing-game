@@ -89,7 +89,7 @@
     /* for kbd */
     --kbdbdr: #979393;   /* kbd border */
     --kbdbg: #d4cbcb;    /* kbd background */
-    --kbdfont: var(--extdark);    /* kbd font color */
+    --kbdfont: black;    /* kbd font color */
 
     /* for button */
     --btnbg: var(--yellow);
@@ -194,18 +194,18 @@ button.btn:active {
 
 button.switcher {
     position: absolute;
-    top: 5vh;
-    right: 5vw;
-    width: 3em;
-    height: 3em;
+    top: 2.1rem;
+    right: 1.2rem;
+    width: 2.5em;
+    height: 2.5em;
     border-radius: 50%;
-    border: 2px solid transparent;
+    border: 2px solid var(--gray);
     background-color: white;
 }
 
 button.switcher:active {
     background-color: #dbdbdb;
-    border: 2px solid var(--gray);
+    border: 2px solid var(--dark);
 }
 
 .inp {
