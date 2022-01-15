@@ -15,25 +15,26 @@
         <link rel="stylesheet" href="style.css">
     </head>
     
-    <body>
+    <body class="light-theme">
         <header class="container">
             <h1>Typing game!</h1>
+            <button class="switcher" id="theme-switcher" type="button">Dark</button>
         </header>
         <main class="container">
             <div class="section">
-                <p><em>Practice your typing skills with a quote from Quotable API. <br>Click <kbd>Start</kbd> to begin!</em></p>
+                <p><em>Practice your typing skills with a quote from Quotable API. Click <kbd>Start</kbd> to begin!</em></p>
             </div>
             
-            <div class="section input">
+            <div class="section">
                 <p id="quote"></p> <!-- This will display our quote -->
                 
                 <!-- This will display any status messages -->
-                <div id="message">
+                <div class="message" id="message">
     
                 </div> 
                 <button class="btn" id="startReset">Start</button> <!-- To start the game -->
                 <br>
-                <input type="text" aria-label="current word" id="typed-value" autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Start typing here..."/> <!-- The textbox for typing -->
+                <input class="inp" type="text" aria-label="current word" id="typed-value" autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Start typing here..."/> <!-- The textbox for typing -->
             </div>
         </main>
         

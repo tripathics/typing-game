@@ -4,6 +4,7 @@
     --purple: #6f42c1;
     --pink: #e83e8c;
     --red: #dc3545;
+    --darkred: #c21728;
     --orange: #fd7e14;
     --yellow: #ffc107;
     --green: #28a745;
@@ -11,7 +12,6 @@
     --cyan: #17a2b8;
     --white: #fff;
     --gray: #6c757d;
-    --gray-dark: #343a40;
     --primary: #007bff;
     --secondary: #6c757d;
     --success: #28a745;
@@ -20,6 +20,110 @@
     --danger: #dc3545;
     --light: #f8f9fa;
     --dark: #343a40;
+    --extdark: #222222;
+    --kdbdark: #3b3b3b;
+    --bgdark: #1e1e1e;
+}
+
+.light-theme {
+    /* for header */
+    --hbg: var(--blue);
+    --hfontcolor: var(--white);
+
+    /* for main body */
+    --bg: var(--white);                 /* background color of body */
+    --fontcolor: var(--extdark);        /* font color of normal body el */
+
+    /* for kbd */
+    --kbdbdr: var(--extdark);   /* kbd border */
+    --kbdbg: var(--kdbdark);    /* kbd background */
+    --kbdfont: var(--white);    /* kbd font color */
+
+    /* for button */
+    --btnbg: var(--primary);
+    --btnfont: var(--white);
+    
+    /* button hover */
+    --btnhvrbg: #0072e4;
+    --btnactbdr: #4e4ecf;
+
+    /* for typed value input */
+    --inpfont: var(--dark);     /* input font */
+    --inpbg: var(--white);      /* input background */
+    --inpbdr: #ced4da;
+    /* input focused */
+    --inpfbdr: #a7c1da;       /* border of focused input */
+    /* wrong input */
+    --wginpbg: var(--red);
+    --wginpfont: var(--white);
+
+    /* highlight text */
+    --hlbg: var(--yellow);
+    --hlfont: black;
+
+    /* highlight incorrect words */
+    --hlincbg: var(--red);
+    --hlincfont: var(--white);
+
+    /* primary class */
+    --primfont: var(--dark);
+    --primbg: #c6e3eb;
+    --primbdr: #72e3e7;
+
+    /* warning class */
+    --warnfont: var(--red);
+    --warnbg: #fff4cd;
+    --warnbdr: #e9ce7d;
+}
+
+.dark-theme {
+    /* for header */
+    --hbg: var(--yellow);
+    --hfontcolor: var(--extdark);
+
+    /* for main body */
+    --bg: var(--bgdark);         /* background color of body */
+    --fontcolor: var(--white);       /* font color of normal body el */
+
+    /* for kbd */
+    --kbdbdr: #979393;   /* kbd border */
+    --kbdbg: #d4cbcb;    /* kbd background */
+    --kbdfont: var(--extdark);    /* kbd font color */
+
+    /* for button */
+    --btnbg: var(--yellow);
+    --btnfont: var(--extdark);
+    /* button hover */
+    --btnhvrbg: #f5bf1c;
+    --btnactbdr: #e0a606;
+    
+    /* for typed value input */
+    --inpfont: var(--light);     /* input font */
+    --inpbg: var(--extdark);      /* input background */
+    --inpbdr: var(--dark);
+    /* input focused */
+    --inpfbdr: var(--yellow);       /* border of focused input */
+    /* wrong input */
+    --wginpbg: var(--darkred);
+    --wginpfont: var(--white);
+
+    /* highlighted text */
+    --hlbg: var(--green);
+    --hlfont: black;
+
+    /* highlight incorrect words */
+    --hlincbg: var(--darkred);
+    --hlincfont: var(--white);
+
+    /* primary class */
+    --primfont: var(--white);
+    --primbg: #26252b;
+    --primbdr: #478ddd;
+
+    /* warning class */
+    --warnfont: #f8baba;
+    --warnbg: #2c2a2a;
+    --warnbdr: #e7c04b;
 }
 
 * {
@@ -30,20 +134,21 @@ body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.7rem;
+    background-color: var(--bg);
+    color: var(--fontcolor);
 }
 
 header {
-    background-color: var(--blue);
-    color: var(--white);
+    background-color: var(--hbg);
+    color: var(--hfontcolor);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: center;
-}
-
-.container {
     padding: 1rem;
 }
 
+
 main.container {
+    padding: 1rem;
     width: 80%;
     margin: auto;
 }
@@ -51,60 +156,55 @@ main.container {
 div.section {
     margin: auto;
     max-width: 417px;
-}
-
-div.input {
     text-align: center;
 }
 
 kbd {
-    border-right: solid rgb(61, 61, 61) 2px;
-    border-bottom: solid rgb(61, 61, 61) 2px;
-    background-color: rgb(122, 122, 122);
-    color: #fff;
+    border-right: solid var(--kbdbdr) 3px;
+    border-bottom: solid var(--kbdbdr) 3px;
+    background-color: var(--kbdbg);
+    color: var(--kbdfont);
     border-radius: 0.25rem;
     padding: 0.2rem;
     font-weight: bold;
-    font-size: larger;
     font-style: normal;
     vertical-align: top;
-    
 }
 
-button {
+button.btn {
     margin: 1rem;
-    background-color: var(--primary);
+    background-color: var(--btnbg);
     font-size: large;
     padding: 0.4rem 0.6rem;
     border: 4px solid transparent;
     border-radius: 0.35rem;
-    color: var(--white);
+    color: var(--btnfont);
     font-weight: bold;
     vertical-align: middle;
 }
 
-button:hover {
-    background-color: #0072e4;
+button.btn:hover, button.btn:active {
+    background-color: var(--btnhvrbg);
 }
 
-button:active {
-    border: 4px solid rgb(86, 86, 226);
+button.btn:active {
+    border: 4px solid var(--btnactbdr);
 }
 
-#typed-value {
+.inp {
     padding: 0.375rem 0.75rem;
     font-size: 1rem;
     line-height: 1.5;
-    color: var(--dark);
-    background-color: #fff;
+    color: var(--inpfont);
+    background-color: var(--inpbg);
     background-clip: padding-box;
-    border: 2px solid #ced4da;
+    border: 2px solid var(--inpbdr);
     border-radius: 0.25rem;
     overflow: visible;
 }
 
-#typed-value:focus {
-    border-color: 2px solid #a7c1da;
+.inp:focus {
+    border-color: 2px solid var(--inpfbdr);
     overflow: visible;
 }
 
@@ -115,37 +215,38 @@ button:active {
     line-height: 1.3;
 }
 
-#message {
-    padding: 0.65rem 1.25rem;
+.message {
+    padding: 0.45rem 1.25rem;
     text-align: left;
     display: none;
     margin-bottom: 1rem;
-    border: 1px solid transparent;
+    border: 2px solid transparent;
     border-radius: 0.35rem;
 }
 
 .warning {
-    background-color: #fff4cd;
-    color: var(--red);
-    border-color: #ffeeba;
+    color: var(--warnfont);
+    background-color: var(--warnbg);
+    border-color: var(--warnbdr);
 }
 
 .primary {
-    color: var(--dark);
-    background-color: #d4edda;
-    border-color: #c3e6cb;
+    color: var(--primfont);
+    background-color: var(--primbg);
+    border-color: var(--primbdr);
 }
 
 .highlight {
-    background-color: var(--yellow);
+    background-color: var(--hlbg);
+    color: var(--hlfont);
 }
 
-.wrong {
-    background-color: var(--red);
-    color: var(--white);
+.highlight-inc {
+    background-color: var(--hlincbg);
+    color: var(--hlincfont)
 }
 
-li {
-    font-family: 'Zilla Slab', serif;
-    list-style: var(--dark);
+.wrong-inp {
+    background-color: var(--wginpbg);
+    color: var(--wginpfont);
 }

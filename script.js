@@ -22,6 +22,7 @@ let typedEl = document.getElementById('typed-value');     // Text input element 
 let messageEl = document.getElementById('message');       // Message element to display status
 let quoteEl = document.getElementById('quote');           // Paragraph element to display quote
 let wordEl = document.getElementById('w0');               // Current word element
+let switcher = document.getElementById('theme-switcher');   // Button to switch themes
 
 // Add event listeners
 
@@ -72,11 +73,10 @@ typedEl.addEventListener('input', function() {
     if (words[wordInd] === input && wordInd === wordsLen - 1) {
         // Hide the input textbox
         this.style.display = 'none';
-        console.log(input, words[wordInd]);
         endTime = new Date().getTime();
 
         // Remove highlight from last word
-        document.getElementById(`w${wordInd}`).style.backgroundColor = 'transparent';
+        document.getElementById(`w${wordInd}`).classList.toggle('highlight');
 
         // Display message
         displayMessage('primary');
@@ -85,8 +85,7 @@ typedEl.addEventListener('input', function() {
     // Currently typing correct
     else if (words[wordInd].startsWith(input) && inputLen !== currWordLen) {
         // keep the background color of input normal
-        this.style.backgroundColor = 'var(--white)';
-        this.style.color = 'var(--dark)';
+        this.classList.remove('wrong-inp');
     }
     // Typed full word correctly
     else if (words[wordInd] === input) {
@@ -98,8 +97,7 @@ typedEl.addEventListener('input', function() {
         currWordLen = words[wordInd].length;
 
         // keep the background color of input normal
-        this.style.backgroundColor = 'var(--white)';
-        this.style.color = 'var(--dark)';
+        this.classList.remove('wrong-inp');
 
         // Update highlight
         document.getElementById(`w${wordInd - 1}`).classList.toggle('highlight');
@@ -107,8 +105,8 @@ typedEl.addEventListener('input', function() {
     }
     // Typed incorrect word
     else {
-        this.style.backgroundColor = 'var(--red)';
-        this.style.color = 'var(--white)';
+        // turn input to red
+        this.classList.add('wrong-inp');
 
         // Add two list of wrong words
         if (!wrongWords.includes(wordInd))
@@ -126,7 +124,7 @@ function resetInterface() {
     typedEl.value = '';
     // Show the input textbox if hidden
     typedEl.style.display = 'inline';
-    typedEl.style.backgroundColor = 'var(--white)';
+    typedEl.classList.remove('wrong-inp');
 
     // Reset all typing variables
     wrongWords = [];
@@ -149,7 +147,7 @@ function displayMessage(classStr, msg='') {
     }
     else 
     {
-        // typing duraction
+        // typing duration
         let duration = (endTime - startTime)/1000;
         
         msg += `<p>Congratulations!! You completed in <b>${duration.toFixed(2)} seconds..</b></p>`;
@@ -159,16 +157,15 @@ function displayMessage(classStr, msg='') {
         
         if (wrongWordsLen > 0) {
             wrongWords.forEach(i => {
-                let word = document.getElementById(`w${i}`).style;
-                word.backgroundColor = 'var(--red)';
-                word.color = 'var(--white)';
+                let word = document.getElementById(`w${i}`).classList;
+                word.add('highlight-inc');
             })
                 if (wrongWordsLen > 1)
                     msg += `<p><b>${wrongWordsLen} out of ${wordsLen} words</b> are incorrect.`;
                 else
                     msg += `<p><b>${wrongWordsLen} out of ${wordsLen} words</b> is incorrect.`;
                 
-                msg += `<br>Incorrect words highlighted in red</p>`;
+                msg += `<br>Incorrect words are highlighted in red</p>`;
             }
         else
             msg += `<p>Impressive!! You are <b>100% accurate</b>...!!</p>`;
@@ -180,3 +177,16 @@ function displayMessage(classStr, msg='') {
     messageEl.innerHTML = msg;
     messageEl.style.display = 'block';
 }
+
+// Switch between light and dark theme
+switcher.addEventListener('click', function() {
+    // toggle the theme
+    document.body.classList.toggle('dark-theme');
+    let currTheme = document.body.className;
+    if (currTheme === 'light-theme') {
+        this.innerHTML = 'Dark';
+    }
+    else {
+        this.innerHTML = 'Light';
+    }
+})
