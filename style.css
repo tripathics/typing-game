@@ -8,6 +8,7 @@
     --orange: #fd7e14;
     --yellow: #ffc107;
     --green: #28a745;
+    --darkgreen: #0b7223;
     --teal: #20c997;
     --cyan: #17a2b8;
     --white: #fff;
@@ -108,8 +109,8 @@
     --wginpfont: var(--white);
 
     /* highlighted text */
-    --hlbg: var(--green);
-    --hlfont: black;
+    --hlbg: var(--darkgreen);
+    --hlfont: var(--white);
 
     /* highlight incorrect words */
     --hlincbg: var(--darkred);
@@ -191,6 +192,22 @@ button.btn:active {
     border: 4px solid var(--btnactbdr);
 }
 
+button.switcher {
+    position: absolute;
+    top: 5vh;
+    right: 5vw;
+    width: 3em;
+    height: 3em;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    background-color: white;
+}
+
+button.switcher:active {
+    background-color: #dbdbdb;
+    border: 2px solid var(--gray);
+}
+
 .inp {
     padding: 0.375rem 0.75rem;
     font-size: 1rem;
@@ -211,7 +228,7 @@ button.btn:active {
 #quote {
     font-family: 'Zilla Slab', serif;
     font-size: larger;
-    letter-spacing: .035rem;
+    letter-spacing: .04rem;
     line-height: 1.3;
 }
 
