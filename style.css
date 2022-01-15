@@ -8,7 +8,7 @@
     --orange: #fd7e14;
     --yellow: #ffc107;
     --green: #28a745;
-    --darkgreen: #0b7223;
+    --darkgreen: #04661b;
     --teal: #20c997;
     --cyan: #17a2b8;
     --white: #fff;
@@ -41,7 +41,7 @@
     --kbdfont: var(--white);    /* kbd font color */
 
     /* for button */
-    --btnbg: var(--primary);
+    --btnbg: #0b7af1;
     --btnfont: var(--white);
     
     /* button hover */
