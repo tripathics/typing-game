@@ -53,7 +53,8 @@
     --inpbg: var(--white);      /* input background */
     --inpbdr: #ced4da;
     /* input focused */
-    --inpfbdr: #a7c1da;       /* border of focused input */
+    --inpfbdr: #65a1da;       /* border of focused input */
+    --inpfshw: #6caae4;
     /* wrong input */
     --wginpbg: var(--red);
     --wginpfont: var(--white);
@@ -68,13 +69,13 @@
 
     /* primary class */
     --primfont: var(--dark);
-    --primbg: #c6e3eb;
+    --primbg: #ebf6f6;
     --primbdr: #72e3e7;
 
     /* warning class */
     --warnfont: var(--red);
-    --warnbg: #fff4cd;
-    --warnbdr: #e9ce7d;
+    --warnbg: #fff8dd;
+    --warnbdr: #e9cf83;
 
     /* switcher button */
     --switcherbg: var(--bg);
@@ -107,7 +108,8 @@
     --inpbg: var(--extdark);      /* input background */
     --inpbdr: var(--dark);
     /* input focused */
-    --inpfbdr: var(--yellow);       /* border of focused input */
+    --inpfbdr: #dbb43e;       /* border of focused input */
+    --inpfshw: #f8cd4a;
     /* wrong input */
     --wginpbg: var(--darkred);
     --wginpfont: var(--white);
@@ -137,6 +139,13 @@
 
 * {
     box-sizing: border-box;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
 }
 
 body {
@@ -232,11 +241,15 @@ div.heading {
     border: 2px solid var(--inpbdr);
     border-radius: 0.25rem;
     overflow: visible;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    transition-property: border-color, box-shadow;
+    transition-duration: 0.15s, 0.15s;
+    transition-delay: 0s, 0s;
 }
 
 .inp:focus {
-    border-color: 2px solid var(--inpfbdr);
-    overflow: visible;
+    border: 3px solid var(--inpfbdr);
+    box-shadow: 0px 0px 5px var(--inpfshw);
 }
 
 #quote {
