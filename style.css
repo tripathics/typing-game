@@ -47,14 +47,15 @@
     /* button hover */
     --btnhvrbg: #0072e4;
     --btnactbdr: #4e4ecf;
+    --btnshw: #468bd6;
 
     /* for typed value input */
     --inpfont: var(--dark);     /* input font */
     --inpbg: var(--white);      /* input background */
     --inpbdr: #ced4da;
     /* input focused */
-    --inpfbdr: #65a1da;       /* border of focused input */
-    --inpfshw: #6caae4;
+    --inpfbdr: #6ca1d3;       /* border of focused input */
+    --inpfshw: #4dd2d6;
     /* wrong input */
     --wginpbg: var(--red);
     --wginpfont: var(--white);
@@ -71,11 +72,13 @@
     --primfont: var(--dark);
     --primbg: #ebf6f6;
     --primbdr: #72e3e7;
+    --primshw: #4dd2d6;
 
     /* warning class */
     --warnfont: var(--red);
     --warnbg: #fff8dd;
     --warnbdr: #e9cf83;
+    --warnshw: #f1d98f;
 
     /* switcher button */
     --switcherbg: var(--bg);
@@ -102,6 +105,7 @@
     /* button hover */
     --btnhvrbg: #f5bf1c;
     --btnactbdr: #e0a606;
+    --btnshw: #face54;
     
     /* for typed value input */
     --inpfont: var(--light);     /* input font */
@@ -199,10 +203,13 @@ button.btn {
     color: var(--btnfont);
     font-weight: bold;
     vertical-align: middle;
+    transition: box-shadow .15s ease-in-out;
+    transition-delay: 0s;
 }
 
 button.btn:hover, button.btn:active {
     background-color: var(--btnhvrbg);
+    box-shadow: 0px 0px 5px var(--btnshw);
 }
 
 button.btn:active {
@@ -218,6 +225,7 @@ button.switcher {
     border-radius: 50%;
     border: 1px solid transparent;
     background-color: var(--switcherbg);
+    transition: border-color .15s ease-in-out, background-color .15s ease-in;
 }
 
 button.switcher:active {
@@ -238,17 +246,17 @@ div.heading {
     color: var(--inpfont);
     background-color: var(--inpbg);
     background-clip: padding-box;
-    border: 2px solid var(--inpbdr);
+    border: 1px solid var(--inpbdr);
     border-radius: 0.25rem;
     overflow: visible;
-    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-    transition-property: border-color, box-shadow;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out, color .02s ease-in;
+    transition-property: border-color, box-shadow, color;
     transition-duration: 0.15s, 0.15s;
     transition-delay: 0s, 0s;
 }
 
 .inp:focus {
-    border: 3px solid var(--inpfbdr);
+    border: 1px solid var(--inpfbdr);
     box-shadow: 0px 0px 5px var(--inpfshw);
 }
 
@@ -266,6 +274,9 @@ div.heading {
     margin-bottom: 1rem;
     border: 2px solid transparent;
     border-radius: 0.35rem;
+    transition: box-shadow .15s ease-in-out;
+    transition-property: box-shadow;
+    transition-delay: 0s, 0s;
 }
 
 .warning {
@@ -274,10 +285,18 @@ div.heading {
     border-color: var(--warnbdr);
 }
 
+.warning:hover {
+    box-shadow: 0px 0px 6px var(--warnshw);
+}
+
 .primary {
     color: var(--primfont);
     background-color: var(--primbg);
     border-color: var(--primbdr);
+}
+
+.primary:hover {
+    box-shadow: 0px 0px 6px var(--primshw);
 }
 
 .highlight {
