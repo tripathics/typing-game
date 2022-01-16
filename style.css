@@ -41,7 +41,7 @@
     --kbdfont: var(--white);    /* kbd font color */
 
     /* for button */
-    --btnbg: #0b7af1;
+    --btnbg: var(--primary);
     --btnfont: var(--white);
     
     /* button hover */
