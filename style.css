@@ -82,7 +82,7 @@
 
     /* switcher button */
     --switcherbg: var(--bg);
-    --switcheractbdr: var(--extdark);
+    --switchershw: var(--light);
 }
 
 .dark-theme {
@@ -138,7 +138,7 @@
 
     /* switcher button */
     --switcherbg: var(--bg);
-    --switcheractbdr: var(--white);
+    --switchershw: var(--dark);
 }
 
 * {
@@ -225,11 +225,11 @@ button.switcher {
     border-radius: 50%;
     border: 1px solid transparent;
     background-color: var(--switcherbg);
-    transition: border-color .15s ease-in-out, background-color .15s ease-in;
+    transition: background-color .15s ease-out, box-shadow .15s ease-in;
 }
 
-button.switcher:active {
-    border: 2px solid var(--switcheractbdr);
+button.switcher:hover, button.switcher:active {
+    box-shadow: 0px 0px 5px var(--switchershw);
 }
 
 div.heading {
@@ -264,6 +264,14 @@ div.heading {
     font-family: 'Zilla Slab', serif;
     font-size: larger;
     letter-spacing: .04rem;
+    line-height: 1.3;
+}
+
+#author {
+    font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
+    font-size: large;
+    letter-spacing: .04rem;
+    text-align: right;
     line-height: 1.3;
 }
 

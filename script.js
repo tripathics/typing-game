@@ -21,6 +21,7 @@ let btnEl = document.getElementById('startReset');        // Start/Reset button 
 let typedEl = document.getElementById('typed-value');     // Text input element where user types
 let messageEl = document.getElementById('message');       // Message element to display status
 let quoteEl = document.getElementById('quote');           // Paragraph element to display quote
+let authorEl = document.getElementById('author');
 let wordEl = document.getElementById('w0');               // Current word element
 let switcher = document.getElementById('theme-switcher');   // Button to switch themes
 
@@ -31,6 +32,7 @@ btnEl.addEventListener('click', function() {
     $.get('https://api.quotable.io/random?minLength=150&maxLength=200', function(response) {
         // Get the quote into quote variable
         quote = response['content'];
+        let author = `-${response['author']}`;
         quoteLen = quote.length;
         words = quote.split(' ');
         wordsLen = words.length;
@@ -43,7 +45,7 @@ btnEl.addEventListener('click', function() {
         }
         html += `<span id="w${wordsLen - 1}">${words[wordsLen - 1]}</span>`
         quoteEl.innerHTML = html;
-
+        authorEl.innerHTML = author;
         resetInterface();
 
         // Turn Start button to Reset button
