@@ -13,7 +13,7 @@
     --cyan: #17a2b8;
     --white: #fff;
     --gray: #6c757d;
-    --primary: #317AB9;
+    --primary: #0072e4;
     --secondary: #6c757d;
     --success: #28a745;
     --info: #17a2b8;
@@ -45,8 +45,8 @@
     --btnfont: var(--white);
     
     /* button hover */
-    --btnhvrbg: #0072e4;
-    --btnactbdr: #4e4ecf;
+    --btnactbg: #005fbe;
+    --btnactbdr: #5454d8;
     --btnshw: #468bd6;
 
     /* for typed value input */
@@ -57,8 +57,8 @@
     --inpfbdr: #6ca1d3;       /* border of focused input */
     --inpfshw: #4dd2d6;
     /* wrong input */
-    --wginpbg: var(--red);
-    --wginpfont: var(--white);
+    --wginpbdr: var(--red);
+    --wginpshw: #c43947;
 
     /* highlight text */
     --hlbg: var(--yellow);
@@ -103,7 +103,7 @@
     --btnbg: var(--yellow);
     --btnfont: var(--extdark);
     /* button hover */
-    --btnhvrbg: #f5bf1c;
+    --btnactbg: #e7b316;
     --btnactbdr: #e0a606;
     --btnshw: #face54;
     
@@ -112,11 +112,11 @@
     --inpbg: var(--extdark);      /* input background */
     --inpbdr: var(--dark);
     /* input focused */
-    --inpfbdr: #dbb43e;       /* border of focused input */
-    --inpfshw: #f8cd4a;
+    --inpfbdr: #caa638;       /* border of focused input */
+    --inpfshw: #cfad48;
     /* wrong input */
-    --wginpbg: var(--darkred);
-    --wginpfont: var(--white);
+    --wginpbdr: #d61f31;
+    --wginpshw: #eb0836;
 
     /* highlighted text */
     --hlbg: var(--darkgreen);
@@ -165,7 +165,7 @@ header {
     color: var(--hfontcolor);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: center;
-    padding: 1rem;
+    padding: 0.7rem;
 }
 
 
@@ -208,17 +208,17 @@ button.btn {
 }
 
 button.btn:hover, button.btn:active {
-    background-color: var(--btnhvrbg);
     box-shadow: 0px 0px 5px var(--btnshw);
 }
 
 button.btn:active {
+    background-color: var(--btnactbg);
     border: 4px solid var(--btnactbdr);
 }
 
 button.switcher {
     position: absolute;
-    top: 2rem;
+    top: 1.6rem;
     right: 1.2rem;
     width: 3em;
     height: 3em;
@@ -246,8 +246,8 @@ div.heading {
     color: var(--inpfont);
     background-color: var(--inpbg);
     background-clip: padding-box;
-    border: 1px solid var(--inpbdr);
-    border-radius: 0.25rem;
+    border: 1.5px solid var(--inpbdr);
+    border-radius: 0.3rem;
     overflow: visible;
     transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out, color .02s ease-in;
     transition-property: border-color, box-shadow, color;
@@ -256,8 +256,18 @@ div.heading {
 }
 
 .inp:focus {
-    border: 1px solid var(--inpfbdr);
-    box-shadow: 0px 0px 5px var(--inpfshw);
+    border: 1.5px solid var(--inpfbdr);
+    box-shadow: 0px 0px 5px 1px var(--inpfshw);
+}
+
+.wrong-inp {
+    box-shadow: 0px 0px 0px 1px var(--wginpshw);
+    border: 1.5px solid var(--wginpbdr);
+}
+
+.wrong-inp:focus {
+    border: 1.5px solid var(--wginpbdr);
+    box-shadow: 0px 0px 6px 2px var(--wginpshw);
 }
 
 #quote {
@@ -315,9 +325,4 @@ div.heading {
 .highlight-inc {
     background-color: var(--hlincbg);
     color: var(--hlincfont)
-}
-
-.wrong-inp {
-    background-color: var(--wginpbg);
-    color: var(--wginpfont);
 }
