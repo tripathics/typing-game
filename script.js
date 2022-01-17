@@ -29,7 +29,7 @@ let switcher = document.getElementById('theme-switcher');   // Button to switch 
 
 // When start/reset button is clicked
 btnEl.addEventListener('click', function() {
-    $.get('https://api.quotable.io/random?minLength=150&maxLength=200', function(response) {
+    $.get('https://api.quotable.io/random?minLength=120&maxLength=160', function(response) {
         // Get the quote into quote variable
         quote = response['content'];
         let author = `-${response['author']}`;
